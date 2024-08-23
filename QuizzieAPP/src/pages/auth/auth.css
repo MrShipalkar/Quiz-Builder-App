@@ -1,0 +1,63 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.login_container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+}
+
+.login_box {
+    height:580px;
+    /* width: max(70%, 330px); */
+    width: 1050px;
+    margin: 0px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login_box .heading {
+    color: #474444;
+    font-family: 'Jomhuria';
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100px;
+    /* margin: 5px; */
+}
+
+.btn_set {
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+    /* margin: px 0; */
+    /* margin-bottom: 40px; */
+}
+
+.btn_set .btn {
+    width: max(15vw, 120px);
+    height: 40px;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    font-family: poppins;
+    font-size: 20px;
+    font-weight: 600;
+    color: #474444;
+    margin-bottom: 20px;
+}
+
+.btn_set .active {
+    box-shadow: 0px 0px 50px 0px rgba(0, 25, 255, 0.24);
+}
+

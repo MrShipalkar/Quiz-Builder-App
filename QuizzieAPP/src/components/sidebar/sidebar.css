@@ -1,0 +1,77 @@
+.sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .logo {
+    /* font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px; */
+    color: #474444;
+    font-family: 'Jomhuria';
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100px;
+    display:grid;
+    place-items: center;
+  }
+  
+  .sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  .sidebar-nav {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sidebar-nav ul li {
+    height: 45px;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    font-family: poppins;
+    font-size: 20px;
+    font-weight: 600;
+    color: #474444;
+    margin-bottom: 50px;
+  }
+
+  
+  .sidebar-nav ul li.active{
+    box-shadow: 0px 0px 14px 0px #0000001F;
+  }
+  
+  .logout-btn {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+  }
+  
+  .logout-btn:hover {
+    background-color: #f44336;
+    color: #fff;
+  }
+  .logout{
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    font-family: poppins;
+    font-size: 20px;
+    font-weight: 700;
+    color: #474444;
+    align-items: center;
+  }
