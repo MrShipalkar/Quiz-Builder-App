@@ -9,7 +9,14 @@ function QuestionWiseAnalysis({ quiz }) {
         <div className='questionwise-header'>
           <h2>{quiz.quizName} Question Analysis</h2>
           <div>
-            <p>Created on: {new Date(quiz.createdOn).toLocaleDateString()}</p>
+          <p>
+  Created on:{" "}
+  {new Date(quiz.createdOn).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  })}
+</p>
             <p>Impressions: {quiz.impressions}</p>
           </div>
         </div>

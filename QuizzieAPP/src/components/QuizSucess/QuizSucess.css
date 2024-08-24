@@ -35,12 +35,12 @@
 
 .sucess-close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     background: none;
     border: none;
-    width: 49px;
-    height: 49px;
+    width: 25px;
+    height: 25px;
     color: #474444;
     cursor: pointer;
 }

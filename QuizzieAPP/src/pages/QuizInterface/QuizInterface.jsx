@@ -165,7 +165,7 @@ function QuizInterface() {
                     <div className="results-container">
                         {quizData.quizType === "Q & A" ? (
                             <>
-                                <h2 className='QA-msg'>Congrats! Quiz is completed</h2>
+                                <h2 className='QA-msg'>Congrats Quiz is completed</h2>
                                 <img src={Result} alt="Result" />
                                 <span>Your Score is &nbsp;
                                     <p className='score'>

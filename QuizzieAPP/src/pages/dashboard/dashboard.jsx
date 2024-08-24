@@ -29,11 +29,11 @@ function Dashboard() {
   const [quizzes, setQuizzes] = useState([]);
   const [trendingQuizzes, setTrendingQuizzes] = useState([]);
   const [showCreateQuizModal, setShowCreateQuizModal] = useState(false);
-  const [showAnalytics, setShowAnalytics] = useState(false); 
+  const [showAnalytics, setShowAnalytics] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [quizToDelete, setQuizToDelete] = useState(null);
   const [quizToEdit, setQuizToEdit] = useState(null);
-  const [quizForAnalysis, setQuizForAnalysis] = useState(null); 
+  const [quizForAnalysis, setQuizForAnalysis] = useState(null);
 
   useEffect(() => {
     const fetchStatsAndQuizzes = async () => {
@@ -55,9 +55,9 @@ function Dashboard() {
           totalImpressions: response.data.totalImpressions,
         });
 
-        setQuizzes(response.data.quizzes); 
+        setQuizzes(response.data.quizzes);
         const sortedQuizzes = [...response.data.quizzes].sort((a, b) => b.impressions - a.impressions);
-        setTrendingQuizzes(sortedQuizzes); 
+        setTrendingQuizzes(sortedQuizzes);
       } catch (error) {
         console.error('Error fetching stats and quizzes:', error);
       }
@@ -99,7 +99,7 @@ function Dashboard() {
       });
 
       setQuizzes(quizzes.filter((quiz) => quiz._id !== quizToDelete));
-      setTrendingQuizzes(trendingQuizzes.filter((quiz) => quiz._id !== quizToDelete)); 
+      setTrendingQuizzes(trendingQuizzes.filter((quiz) => quiz._id !== quizToDelete));
       setShowDeleteModal(false);
       toast.success('Quiz deleted successfully');
     } catch (error) {
@@ -109,7 +109,7 @@ function Dashboard() {
   };
 
   const handleEditQuiz = (quiz) => {
-    setQuizToEdit(quiz); 
+    setQuizToEdit(quiz);
   };
 
   const handleShareQuiz = (quizId) => {
@@ -124,7 +124,7 @@ function Dashboard() {
   };
 
   const handleQuestionWiseAnalysis = (quiz) => {
-    setQuizForAnalysis(quiz); 
+    setQuizForAnalysis(quiz);
   };
 
   return (
@@ -163,7 +163,14 @@ function Dashboard() {
                           {formatImpressions(quiz.impressions)} <img src={eye} alt="impressions" />
                         </span>
                       </div>
-                      <p>Created on: {new Date(quiz.createdOn).toLocaleDateString()}</p>
+                      <p>
+                        Created on:{" "}
+                        {new Date(quiz.createdOn).toLocaleDateString("en-GB", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </p>
                     </div>
                   ))
                 ) : (
@@ -173,7 +180,7 @@ function Dashboard() {
             </div>
           </>
         ) : quizForAnalysis ? (
-          <QuestionWiseAnalysis quiz={quizForAnalysis} /> 
+          <QuestionWiseAnalysis quiz={quizForAnalysis} />
         ) : (
           <div className="analytics-view">
             <h3>Quiz Analysis</h3>
@@ -184,9 +191,9 @@ function Dashboard() {
                   <th>Quiz Name</th>
                   <th>Created on</th>
                   <th>Impression</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                  <th className='logo-column'></th>
+                  <th className='logo-column'></th>
+                  <th className='logo-column'></th>
                   <th></th>
                 </tr>
               </thead>
@@ -195,7 +202,9 @@ function Dashboard() {
                   <tr key={quiz._id}>
                     <td>{index + 1}</td>
                     <td>{quiz.quizName.length > 20 ? `${quiz.quizName.slice(0, 20)}...` : quiz.quizName}</td>
-                    <td>{new Date(quiz.createdOn).toLocaleDateString()}</td>
+                    <td>{<p>{new Date(quiz.createdOn).toLocaleDateString("en-GB", {day: "2-digit",month: "short",year: "numeric",})}
+                    </p>
+                    }</td>
                     <td>{formatImpressions(quiz.impressions)}</td>
                     <td><button onClick={() => handleEditQuiz(quiz)} className="edit-button"><img src={editIcon} alt="editIcon" /></button></td>
                     <td><button onClick={() => handleDeleteQuiz(quiz._id)} className="delete-button"><img src={deleteOption} alt="deleteOption" /></button></td>
