@@ -124,3 +124,78 @@
     color: #FF5D01;
   }
   
+ /* analysis page css */
+
+
+.analytics-view h3 {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 50px;
+  color: rgba(80, 118, 255, 1);
+}
+
+.analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 auto;
+  text-align: center;
+ 
+}
+
+.analytics-table th,
+.analytics-table td {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.analytics-table th {
+  background-color: rgba(80, 118, 255, 1);
+  height: 35px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.analytics-table th:first-child{
+  border-radius: 10px 0px 0px 10px;
+}
+.analytics-table th:last-child{
+  border-radius: 0px 10px 10px 0px;
+}
+
+.analytics-table tbody tr:nth-child(even) td:first-child{
+  border-radius: 10px 0px 0px 10px;
+}
+
+.analytics-table tbody tr:nth-child(even) td:last-child{
+  border-radius: 0px 10px 10px 0px;
+}
+.analytics-table tbody tr:nth-child(even) td {
+  background-color: rgba(179, 196, 255, 1);
+
+}
+
+.analytics-table tbody tr:nth-child(odd) {
+  background-color: rgba(237, 237, 237, 1);
+}
+
+.analytics-table tbody tr td button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+
+.analytics-table tbody tr td a {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 600;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.analytics-table tbody tr td a:hover {
+  text-decoration: underline;
+}

@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Sidebar({ onCreateQuizClick }) {  // Accept a prop for handling the Create Quiz click
-  const navigate = useNavigate();
+function Sidebar({ onCreateQuizClick, onAnalyticsClick, onDashboardClick }) {
   const [activeLink, setActiveLink] = useState('Dashboard');
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
     if (link === 'Create Quiz') {
-      onCreateQuizClick();  // Call the function passed as prop to open the modal
+      onCreateQuizClick();
     } else if (link === 'Dashboard') {
-      navigate('/dashboard');
+      onDashboardClick();  // Call to show Dashboard view
     } else if (link === 'Analytics') {
-      navigate('/analytics');
+      onAnalyticsClick();  // Call to show Analytics view
     }
   };
 
@@ -23,7 +21,7 @@ function Sidebar({ onCreateQuizClick }) {  // Accept a prop for handling the Cre
     localStorage.clear('authToken');
     toast.success('Logged out successfully');
     setTimeout(() => {
-      navigate('/');
+      window.location.href = '/';
     }, 2000);
   };
 
