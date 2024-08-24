@@ -25,6 +25,7 @@ function Dashboard() {
     totalImpressions: 0,
   });
   const [quizzes, setQuizzes] = useState([]);
+  const [trendingQuizzes, setTrendingQuizzes] = useState([]); // State for trending quizzes
   const [showCreateQuizModal, setShowCreateQuizModal] = useState(false);
   const [showAnalytics, setShowAnalytics] = useState(false); // State to toggle analytics view
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -50,7 +51,9 @@ function Dashboard() {
           totalImpressions: response.data.totalImpressions,
         });
 
-        setQuizzes(response.data.quizzes); // Store quizzes
+        const sortedQuizzes = response.data.quizzes.sort((a, b) => b.impressions - a.impressions);
+        setTrendingQuizzes(sortedQuizzes); // Store sorted quizzes for Trending Quizzes
+        setQuizzes(response.data.quizzes); // Store original quizzes for analytics
       } catch (error) {
         console.error('Error fetching stats and quizzes:', error);
       }
@@ -90,6 +93,7 @@ function Dashboard() {
       });
 
       setQuizzes(quizzes.filter((quiz) => quiz._id !== quizToDelete));
+      setTrendingQuizzes(trendingQuizzes.filter((quiz) => quiz._id !== quizToDelete)); // Update both states
       setShowDeleteModal(false);
       toast.success('Quiz deleted successfully');
     } catch (error) {
@@ -109,12 +113,8 @@ function Dashboard() {
       });
   };
 
-  // Sorting for Trending Quizzes only
-  const sortedTrendingQuizzes = [...quizzes].sort((a, b) => b.impressions - a.impressions);
-
   return (
     <div className="dashboard-container">
-      <ToastContainer />
       <Sidebar
         onCreateQuizClick={handleCreateQuizClick}
         onAnalyticsClick={handleAnalyticsClick}
@@ -140,8 +140,8 @@ function Dashboard() {
             <div className="trending-quizzes">
               <h3>Trending Quizzes</h3>
               <div className="quiz-grid">
-                {sortedTrendingQuizzes && sortedTrendingQuizzes.length > 0 ? (
-                  sortedTrendingQuizzes.map((quiz) => (
+                {trendingQuizzes && trendingQuizzes.length > 0 ? (
+                  trendingQuizzes.map((quiz) => (
                     <div className="quiz-card" key={quiz._id}>
                       <div className="quiz-details">
                         <h2>{quiz.quizName.length > 20 ? `${quiz.quizName.slice(0, 20)}...` : quiz.quizName}</h2>

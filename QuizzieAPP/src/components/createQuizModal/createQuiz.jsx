@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './CreateQuiz.css';
-import AddQuestion from '../addQuestionModal/addQuestion.jsx'
-
+import AddQuestion from '../addQuestionModal/addQuestion.jsx';
+import { toast,ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CreateQuiz({ onClose, onQuizCreated }) {
     const [quizName, setQuizName] = useState('');
@@ -10,7 +11,7 @@ function CreateQuiz({ onClose, onQuizCreated }) {
 
     const handleContinue = () => {
         if (quizName.trim() === '' || quizType === '') {
-            alert('Please fill out both quiz name and type.');
+            toast.error('Please fill out both quiz name and type.');
             return;
         }
         // Open the question modal instead of submitting the quiz immediately
@@ -19,6 +20,7 @@ function CreateQuiz({ onClose, onQuizCreated }) {
 
     return (
         <div>
+            <ToastContainer/>
             {showQuestionModal && (
                 <AddQuestion 
                     quizName={quizName}
@@ -29,35 +31,35 @@ function CreateQuiz({ onClose, onQuizCreated }) {
             )}
             {!showQuestionModal && (
                 <div>
-                    <div className="overlay"></div>
-                    <div className="modal open">
-                        <div className="modal-content">
+                    <div className="create-quiz-overlay"></div>
+                    <div className="create-quiz-modal create-quiz-open">
+                        <div className="create-quiz-modal-content1">
                             <input
                                 type="text"
                                 placeholder="Quiz name"
                                 value={quizName}
                                 onChange={(e) => setQuizName(e.target.value)}
                             />
-                            <div className="quiz-type-selection">
+                            <div className="create-quiz-quiz-type-selection">
                                 <p>Quiz Type</p>
                                 <button
-                                    className={quizType === 'Q & A' ? 'active' : ''}
+                                    className={quizType === 'Q & A' ? 'create-quiz-active' : ''}
                                     onClick={() => setQuizType('Q & A')}
                                 >
                                     Q & A
                                 </button>
                                 <button
-                                    className={quizType === 'Poll' ? 'active' : ''}
+                                    className={quizType === 'Poll' ? 'create-quiz-active' : ''}
                                     onClick={() => setQuizType('Poll')}
                                 >
                                     Poll Type
                                 </button>
                             </div>
-                            <div className="modal-actions">
-                                <button className="cancel-btn" onClick={onClose}>
+                            <div className="create-quiz-modal-actions">
+                                <button className="create-quiz-cancel-btn" onClick={onClose}>
                                     Cancel
                                 </button>
-                                <button className="continue-btn" onClick={handleContinue}>
+                                <button className="create-quiz-continue-btn" onClick={handleContinue}>
                                     Continue
                                 </button>
                             </div>

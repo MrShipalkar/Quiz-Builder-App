@@ -1,5 +1,5 @@
 /* Overlay for the modal background */
-.overlay {
+.create-quiz-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
 }
 
 /* Modal container */
-.modal {
+.create-quiz-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -23,16 +23,17 @@
 }
 
 /* Display modal when open */
-.modal.open {
+.create-quiz-modal.create-quiz-open {
     display: block;
 }
 
 /* Modal content styling */
-.modal-content {
-    width: max(330px, 35vw);
-    height: 35vh;
+.create-quiz-modal-content1 {
+    width: 100%;
+    max-width: 900px;
+    /* height: 35vh; */
     background: #fff;
-    border-radius: 0.25em;
+    border-radius: 10px;
     padding: 2.5em;
     display: flex;
     flex-direction: column;
@@ -40,41 +41,43 @@
 }
 
 /* Input field styling */
-.modal-content input {
-    font-size: 20px;
+.create-quiz-modal-content1 input {
+    font-size: 25px;
     color: #9F9F9F;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 20px;
-    height: 55px;
+    height: auto;
     width: 100%;
     padding: 0.65em;
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 0px 25px 0px #00000026;
     border: none;
+    outline: none;
 }
 
+
 /* Quiz type selection section */
-.quiz-type-selection {
+.create-quiz-quiz-type-selection {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 1em 0;
-    color: #b3b3b3;
-    margin: 20px;
+    justify-content: space-around;
+    /* margin: 1em 0; */
+    color: #9F9F9F;
+    margin: 20px 0px 20px 0px;
 }
 
 /* Quiz type title */
-.quiz-type-selection p {
+.create-quiz-quiz-type-selection p {
     font-size: 25px;
     font-weight: 500;
 }
 
 /* Buttons for selecting quiz type */
-.quiz-type-selection button {
+.create-quiz-quiz-type-selection button {
     width: 30%;
-    height: 35px;
+    height: 43px;
     font-size: 20px;
     font-weight: 500;
     color: #9F9F9F;
@@ -89,19 +92,20 @@
 }
 
 /* Active state for quiz type selection */
-.quiz-type-selection .active {
+.create-quiz-quiz-type-selection .create-quiz-active {
     background-color: #60B84B;
     color: white;
 }
 
 /* Action buttons at the bottom of the modal */
-.modal-actions {
+.create-quiz-modal-actions {
     display: flex;
-    justify-content: space-between;
+    gap: 50px;
+    justify-content: space-around;
 }
 
 /* Styling for the action buttons */
-.modal-actions button {
+.create-quiz-modal-actions button {
     width: 279px;
     border-radius: 10px;
     background-color: #fff;
@@ -116,7 +120,7 @@
 }
 
 /* Continue button styling */
-.modal-actions .continue-btn {
+.create-quiz-modal-actions .create-quiz-continue-btn {
     background-color: #60B84B;
     color: white;
 }

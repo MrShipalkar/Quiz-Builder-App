@@ -135,7 +135,7 @@
   color: rgba(80, 118, 255, 1);
 }
 
-.analytics-table {
+.analytics-view .analytics-table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
