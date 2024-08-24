@@ -191,34 +191,67 @@ const shareQuiz = async (req, res) => {
 
   const getQuizzesByUserId = async (req, res) => {
     try {
-      const userId = req.user._id;  // Correctly use req.user._id from middleware
-  
-      // Find all quizzes created by the user
-      const quizzes = await Quiz.find({ createdBy: userId });
-  
-      const totalQuizzes = quizzes.length;
-  
-      let totalQuestions = 0;
-      let totalImpressions = 0;
-  
-      quizzes.forEach(quiz => {
-        totalQuestions += quiz.questions.length;
-        totalImpressions += quiz.impressions;
-  
-        quiz.questions.forEach(question => {
-          totalImpressions += question.impressions;
+        const userId = req.user._id;
+
+        // Find all quizzes created by the user
+        const quizzes = await Quiz.find({ createdBy: userId });
+
+        const totalQuizzes = quizzes.length;
+        let totalQuestions = 0;
+        let totalImpressions = 0;
+
+        quizzes.forEach(quiz => {
+            totalQuestions += quiz.questions.length;
+            totalImpressions += quiz.impressions;
+
+            quiz.questions.forEach(question => {
+                totalImpressions += question.impressions;
+            });
         });
-      });
-  
-      res.json({
-        totalQuizzes,
-        totalQuestions,
-        totalImpressions,
-      });
+
+        res.json({
+            totalQuizzes,
+            totalQuestions,
+            totalImpressions,
+            quizzes // Include quizzes in the response
+        });
     } catch (error) {
-      console.error('Error fetching user stats:', error);
-      res.status(500).json({ error: 'Server error' });
+        console.error('Error fetching user stats:', error);
+        res.status(500).json({ error: 'Server error' });
     }
-  };
+};
+
+
+
   
-module.exports = { createQuiz, updateQuiz, deleteQuiz, getQuiz,getQuizzesByUserId,updateCorrectAnswers, ananymousUser,shareQuiz};
+
+const getQuizById = async (req, res) => {
+  try {
+      const quizId = req.params.quizId;
+
+      // Find the quiz by ID
+      const quiz = await Quiz.findById(quizId);
+
+      if (!quiz) {
+          return res.status(404).json({ error: "Quiz not found" });
+      }
+
+      // Increment the quiz's impressions count
+      quiz.impressions += 1;
+      await quiz.save();
+
+      // Send the quiz data back to the client
+      res.json({
+          message: "Quiz fetched successfully",
+          data: quiz,
+      });
+  } catch (error) {
+      console.error('Error fetching quiz:', error);
+      res.status(500).json({ error: 'Server error' });
+  }
+};
+
+
+
+
+module.exports = { createQuiz, updateQuiz, deleteQuiz, getQuiz,getQuizzesByUserId,updateCorrectAnswers,getQuizById, ananymousUser,shareQuiz};

@@ -4,7 +4,6 @@ import axios from 'axios';
 import './QuizInterface.css';
 import Result from '../../assets/Result.png';
 
-
 function QuizInterface() {
     const { quizId } = useParams();
     const [quizData, setQuizData] = useState(null);
@@ -26,7 +25,7 @@ function QuizInterface() {
     }, [quizId]);
 
     useEffect(() => {
-        if (quizData && quizData.questions[currentQuestionIndex].timer > 0) {
+        if (quizData && quizData.questions[currentQuestionIndex]?.timer > 0) {
             setTimer(quizData.questions[currentQuestionIndex].timer);
         } else {
             setTimer(null);
@@ -56,7 +55,7 @@ function QuizInterface() {
         if (currentQuestionIndex < quizData.questions.length - 1) {
             setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
             setSelectedOption(null);
-            if (quizData.questions[currentQuestionIndex + 1].timer > 0) {
+            if (quizData.questions[currentQuestionIndex + 1]?.timer > 0) {
                 setTimer(quizData.questions[currentQuestionIndex + 1].timer);
             } else {
                 setTimer(null);
@@ -94,7 +93,6 @@ function QuizInterface() {
 
     return (
         <div className="quiz-interface">
-            
             <div className='quiz-box'>
                 {!showResults ? (
                     <>
@@ -109,21 +107,21 @@ function QuizInterface() {
                         </div>
                         <div className="options-container">
                             {quizData.questions[currentQuestionIndex].options.map((option, index) => (
-                               <div
-                               key={index}
-                               className={`option ${selectedOption === index ? 'selected' : ''}`}
-                               onClick={() => handleOptionSelect(index)}
-                             >
-                               {option.text && <p>{option.text}</p>}  
-                               {option.url && (
-                                 <img 
-                                   src={option.url} 
-                                   alt="option"
-                                   className="option-image"
-                                   onError={handleImageError}
-                                 />
-                               )}
-                             </div>
+                                <div
+                                    key={index}
+                                    className={`option ${selectedOption === index ? 'selected' : ''}`}
+                                    onClick={() => handleOptionSelect(index)}
+                                >
+                                    {option.text && <p>{option.text}</p>}  
+                                    {option.url && (
+                                        <img 
+                                            src={option.url} 
+                                            alt="option"
+                                            className="option-image"
+                                            onError={handleImageError}
+                                        />
+                                    )}
+                                </div>
                             ))}
                         </div>
                         <button onClick={handleNextQuestion}>

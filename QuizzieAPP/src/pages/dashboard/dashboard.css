@@ -98,11 +98,17 @@
     justify-content: space-between;
     padding:0 10px;
   }
-  .quiz-details h2{
+  
+  .quiz-details h2 {
     font-size: 23px;
     color: #474444;
     margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px; /* Adjust based on your design */
   }
+  
   
   .impressions {
     font-size: 20px;
