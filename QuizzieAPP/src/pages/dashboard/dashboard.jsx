@@ -5,6 +5,7 @@ import eye from '../../assets/eye.png';
 import axios from 'axios';
 import CreateQuiz from '../../components/createQuizModal/createQuiz';
 import ConfirmDeleteModal from '../../components/deleteModal/ConfirmDeleteModal';
+import EditQuestionsModal from '../../components/editQuestionModal/EditQuestionsModal'; // Import the EditQuestionsModal component
 import editIcon from '../../assets/editIcon.png';
 import deleteOption from '../../assets/deleteOption.png';
 import shareIcon from '../../assets/shareIcon.png';
@@ -30,6 +31,7 @@ function Dashboard() {
   const [showAnalytics, setShowAnalytics] = useState(false); // State to toggle analytics view
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [quizToDelete, setQuizToDelete] = useState(null);
+  const [quizToEdit, setQuizToEdit] = useState(null); // State to manage the quiz to edit
 
   useEffect(() => {
     const fetchStatsAndQuizzes = async () => {
@@ -51,9 +53,9 @@ function Dashboard() {
           totalImpressions: response.data.totalImpressions,
         });
 
-        const sortedQuizzes = response.data.quizzes.sort((a, b) => b.impressions - a.impressions);
-        setTrendingQuizzes(sortedQuizzes); // Store sorted quizzes for Trending Quizzes
         setQuizzes(response.data.quizzes); // Store original quizzes for analytics
+        const sortedQuizzes = [...response.data.quizzes].sort((a, b) => b.impressions - a.impressions);
+        setTrendingQuizzes(sortedQuizzes); // Store sorted quizzes for Trending Quizzes
       } catch (error) {
         console.error('Error fetching stats and quizzes:', error);
       }
@@ -100,6 +102,10 @@ function Dashboard() {
       console.error('Error deleting quiz:', error);
       toast.error('Failed to delete quiz');
     }
+  };
+
+  const handleEditQuiz = (quiz) => {
+    setQuizToEdit(quiz); // Store the quiz to be edited
   };
 
   const handleShareQuiz = (quizId) => {
@@ -181,7 +187,7 @@ function Dashboard() {
                     <td>{quiz.quizName.length > 20 ? `${quiz.quizName.slice(0, 20)}...` : quiz.quizName}</td>
                     <td>{new Date(quiz.createdOn).toLocaleDateString()}</td>
                     <td>{formatImpressions(quiz.impressions)}</td>
-                    <td><button className="edit-button"><img src={editIcon} alt="editIcon" /></button></td>
+                    <td><button onClick={() => handleEditQuiz(quiz)} className="edit-button"><img src={editIcon} alt="editIcon" /></button></td>
                     <td><button onClick={() => handleDeleteQuiz(quiz._id)} className="delete-button"><img src={deleteOption} alt="deleteOption" /></button></td>
                     <td><button onClick={() => handleShareQuiz(quiz._id)} className="share-button"><img src={shareIcon} alt="shareIcon" /></button></td>
                     <td><a href="#">Question Wise Analysis</a></td>
@@ -193,6 +199,9 @@ function Dashboard() {
         )}
         {showCreateQuizModal && (
           <CreateQuiz onClose={() => setShowCreateQuizModal(false)} />
+        )}
+        {quizToEdit && (
+          <EditQuestionsModal quiz={quizToEdit} onClose={() => setQuizToEdit(null)} />
         )}
         <ConfirmDeleteModal
           show={showDeleteModal}
