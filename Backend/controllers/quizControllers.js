@@ -252,6 +252,35 @@ const getQuizById = async (req, res) => {
 };
 
 
+const updateChosenOption = async (req, res) => {
+  const { quizId, questionIndex, optionIndex } = req.body;
+
+  try {
+      const quiz = await Quiz.findById(quizId);
+      if (!quiz) {
+          return res.status(404).json({ message: 'Quiz not found' });
+      }
+
+      // Increment the chosen count for the selected option
+      quiz.questions[questionIndex].options[optionIndex].choosen += 1;
+
+      // Increment the impressions count for the question
+      quiz.questions[questionIndex].impressions += 1;
+
+      // console.log('Updated question impressions:', quiz.questions[questionIndex].impressions);
+      // console.log('Updated option chosen count:', quiz.questions[questionIndex].options[optionIndex].choosen);
+
+      // Save the changes to the database
+      await quiz.save();
+
+      res.status(200).json({ message: 'Chosen option updated successfully', status: 'ok' });
+  } catch (error) {
+      console.error('Error updating chosen option:', error);
+      res.status(500).json({ message: 'Error updating chosen option', error: error.message });
+  }
+};
 
 
-module.exports = { createQuiz, updateQuiz, deleteQuiz, getQuiz,getQuizzesByUserId,updateCorrectAnswers,getQuizById, ananymousUser,shareQuiz};
+
+
+module.exports = { createQuiz, updateQuiz, deleteQuiz, getQuiz,getQuizzesByUserId,updateCorrectAnswers,getQuizById,updateChosenOption, ananymousUser,shareQuiz};

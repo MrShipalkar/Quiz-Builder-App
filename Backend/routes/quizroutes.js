@@ -8,6 +8,7 @@ const {
     getQuizzesByUserId, 
     updateCorrectAnswers, 
     getQuizById, 
+    updateChosenOption,
     ananymousUser, 
     shareQuiz
 } = require('../controllers/quizControllers');
@@ -18,6 +19,7 @@ router.delete('/deleteQuiz/:id', deleteQuiz);
 router.get('/getQuiz/:quizId', getQuizById); // Updated to get quiz by ID and increment impressions
 router.get('/getQuizzesByUserId/', getQuizzesByUserId);
 router.post('/updateCorrectAnswers', updateCorrectAnswers);
+router.post('/updateChosenOption',updateChosenOption)
 // Uncomment if you want to use them
 // router.get('/ananymousUser/:id', ananymousUser);
 // router.post('/shareQuiz/:id', shareQuiz);

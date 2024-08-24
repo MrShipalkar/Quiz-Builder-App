@@ -5,7 +5,8 @@ import eye from '../../assets/eye.png';
 import axios from 'axios';
 import CreateQuiz from '../../components/createQuizModal/createQuiz';
 import ConfirmDeleteModal from '../../components/deleteModal/ConfirmDeleteModal';
-import EditQuestionsModal from '../../components/editQuestionModal/EditQuestionsModal'; // Import the EditQuestionsModal component
+import EditQuestionsModal from '../../components/editQuestionModal/EditQuestionsModal';
+import QuestionWiseAnalysis from '../../components/questionWiseAnalysis/QuestionWiseAnalysis'; // Import the QuestionWiseAnalysis component
 import editIcon from '../../assets/editIcon.png';
 import deleteOption from '../../assets/deleteOption.png';
 import shareIcon from '../../assets/shareIcon.png';
@@ -26,12 +27,13 @@ function Dashboard() {
     totalImpressions: 0,
   });
   const [quizzes, setQuizzes] = useState([]);
-  const [trendingQuizzes, setTrendingQuizzes] = useState([]); // State for trending quizzes
+  const [trendingQuizzes, setTrendingQuizzes] = useState([]);
   const [showCreateQuizModal, setShowCreateQuizModal] = useState(false);
-  const [showAnalytics, setShowAnalytics] = useState(false); // State to toggle analytics view
+  const [showAnalytics, setShowAnalytics] = useState(false); 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [quizToDelete, setQuizToDelete] = useState(null);
-  const [quizToEdit, setQuizToEdit] = useState(null); // State to manage the quiz to edit
+  const [quizToEdit, setQuizToEdit] = useState(null);
+  const [quizForAnalysis, setQuizForAnalysis] = useState(null); 
 
   useEffect(() => {
     const fetchStatsAndQuizzes = async () => {
@@ -53,9 +55,9 @@ function Dashboard() {
           totalImpressions: response.data.totalImpressions,
         });
 
-        setQuizzes(response.data.quizzes); // Store original quizzes for analytics
+        setQuizzes(response.data.quizzes); 
         const sortedQuizzes = [...response.data.quizzes].sort((a, b) => b.impressions - a.impressions);
-        setTrendingQuizzes(sortedQuizzes); // Store sorted quizzes for Trending Quizzes
+        setTrendingQuizzes(sortedQuizzes); 
       } catch (error) {
         console.error('Error fetching stats and quizzes:', error);
       }
@@ -69,11 +71,13 @@ function Dashboard() {
   };
 
   const handleAnalyticsClick = () => {
-    setShowAnalytics(true); // Show analytics view
+    setShowAnalytics(true);
+    setQuizForAnalysis(null); // Reset analysis view when clicking on analytics
   };
 
   const handleDashboardClick = () => {
-    setShowAnalytics(false); // Show stats/trending quizzes view
+    setShowAnalytics(false);
+    setQuizForAnalysis(null); // Reset analysis view when returning to the dashboard
   };
 
   const handleDeleteQuiz = (quizId) => {
@@ -95,7 +99,7 @@ function Dashboard() {
       });
 
       setQuizzes(quizzes.filter((quiz) => quiz._id !== quizToDelete));
-      setTrendingQuizzes(trendingQuizzes.filter((quiz) => quiz._id !== quizToDelete)); // Update both states
+      setTrendingQuizzes(trendingQuizzes.filter((quiz) => quiz._id !== quizToDelete)); 
       setShowDeleteModal(false);
       toast.success('Quiz deleted successfully');
     } catch (error) {
@@ -105,7 +109,7 @@ function Dashboard() {
   };
 
   const handleEditQuiz = (quiz) => {
-    setQuizToEdit(quiz); // Store the quiz to be edited
+    setQuizToEdit(quiz); 
   };
 
   const handleShareQuiz = (quizId) => {
@@ -119,6 +123,10 @@ function Dashboard() {
       });
   };
 
+  const handleQuestionWiseAnalysis = (quiz) => {
+    setQuizForAnalysis(quiz); 
+  };
+
   return (
     <div className="dashboard-container">
       <Sidebar
@@ -127,7 +135,7 @@ function Dashboard() {
         onDashboardClick={handleDashboardClick}
       />
       <main className="main-content">
-        {!showAnalytics ? (
+        {!showAnalytics && !quizForAnalysis ? (
           <>
             <div className="stats-container">
               <div className="stat-box">
@@ -164,6 +172,8 @@ function Dashboard() {
               </div>
             </div>
           </>
+        ) : quizForAnalysis ? (
+          <QuestionWiseAnalysis quiz={quizForAnalysis} /> 
         ) : (
           <div className="analytics-view">
             <h3>Quiz Analysis</h3>
@@ -190,7 +200,7 @@ function Dashboard() {
                     <td><button onClick={() => handleEditQuiz(quiz)} className="edit-button"><img src={editIcon} alt="editIcon" /></button></td>
                     <td><button onClick={() => handleDeleteQuiz(quiz._id)} className="delete-button"><img src={deleteOption} alt="deleteOption" /></button></td>
                     <td><button onClick={() => handleShareQuiz(quiz._id)} className="share-button"><img src={shareIcon} alt="shareIcon" /></button></td>
-                    <td><a href="#">Question Wise Analysis</a></td>
+                    <td><button onClick={() => handleQuestionWiseAnalysis(quiz)} className="analysis-button">Question Wise Analysis</button></td>
                   </tr>
                 ))}
               </tbody>

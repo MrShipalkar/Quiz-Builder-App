@@ -43,18 +43,39 @@ function QuizInterface() {
         }
     }, [timer]);
 
-    const handleOptionSelect = (optionIndex) => {
+    const handleOptionSelect = async (optionIndex) => {
         setSelectedOption(optionIndex);
+        // await updateChosenOption(currentQuestionIndex, optionIndex);
     };
 
     const handleNextQuestion = async () => {
         const currentQuestion = quizData.questions[currentQuestionIndex];
+    
+        console.log('Sending request to update chosen option:', { quizId, questionIndex: currentQuestionIndex, optionIndex: selectedOption });
+        
+        axios.post(
+            'http://localhost:3001/api/quiz/updateChosenOption',
+            { quizId, questionIndex: currentQuestionIndex, optionIndex: selectedOption },
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            }
+        ).catch(error => {
+            console.error('Error updating chosen option:', error);
+        });
+    
+        // If the correct option was selected, update the correct answers count
         if (currentQuestion.correctOption === selectedOption) {
             await updateCorrectAnswers(currentQuestionIndex);
         }
+    
+        // Move to the next question or show results
         if (currentQuestionIndex < quizData.questions.length - 1) {
             setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
             setSelectedOption(null);
+    
+            // Reset timer if applicable
             if (quizData.questions[currentQuestionIndex + 1]?.timer > 0) {
                 setTimer(quizData.questions[currentQuestionIndex + 1].timer);
             } else {
@@ -64,6 +85,7 @@ function QuizInterface() {
             setShowResults(true);
         }
     };
+    
 
     const updateCorrectAnswers = async (questionIndex) => {
         try {
@@ -79,6 +101,17 @@ function QuizInterface() {
             );
         } catch (error) {
             console.error('Error updating correct answers:', error);
+        }
+    };
+
+    const updateChosenOption = async (questionIndex, optionIndex) => {
+        try {
+            await axios.post(
+                'http://localhost:3001/api/quiz/updateChosenOption',
+                { quizId, questionIndex, optionIndex }
+            );
+        } catch (error) {
+            console.error('Error updating chosen option:', error);
         }
     };
 
