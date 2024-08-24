@@ -41,7 +41,9 @@ function Dashboard() {
           totalImpressions: response.data.totalImpressions,
         });
 
-        setQuizzes(response.data.quizzes); // Store quizzes in the state
+        // Sort quizzes by impressions in descending order before setting state
+        const sortedQuizzes = response.data.quizzes.sort((a, b) => b.impressions - a.impressions);
+        setQuizzes(sortedQuizzes); // Store sorted quizzes in the state
       } catch (error) {
         console.error('Error fetching stats and quizzes:', error);
       }
@@ -92,7 +94,6 @@ function Dashboard() {
               <p>No quizzes available.</p>
             )}
           </div>
-
         </div>
 
         {showCreateQuizModal && (
