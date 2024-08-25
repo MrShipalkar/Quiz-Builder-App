@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Sidebar.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import sidebarLine from '../../assets/sidebarLine.png';
 
 function Sidebar({ onCreateQuizClick, onAnalyticsClick, onDashboardClick }) {
   const [activeLink, setActiveLink] = useState('Dashboard');
@@ -51,7 +52,8 @@ function Sidebar({ onCreateQuizClick, onAnalyticsClick, onDashboardClick }) {
           </li>
         </ul>
       </nav>
-      <ul>
+      <ul className='logout-wrapper'>
+        <img src={sidebarLine} alt="" />
         <li onClick={logoutHandler} className='logout'>LOG OUT</li>
       </ul>
     </aside>
