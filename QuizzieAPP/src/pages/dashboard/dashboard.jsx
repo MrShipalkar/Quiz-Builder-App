@@ -6,7 +6,7 @@ import axios from 'axios';
 import CreateQuiz from '../../components/createQuizModal/createQuiz';
 import ConfirmDeleteModal from '../../components/deleteModal/ConfirmDeleteModal';
 import EditQuestionsModal from '../../components/editQuestionModal/EditQuestionsModal';
-import QuestionWiseAnalysis from '../../components/questionWiseAnalysis/QuestionWiseAnalysis'; // Import the QuestionWiseAnalysis component
+import QuestionWiseAnalysis from '../../components/questionWiseAnalysis/QuestionWiseAnalysis';
 import editIcon from '../../assets/editIcon.png';
 import deleteOption from '../../assets/deleteOption.png';
 import shareIcon from '../../assets/shareIcon.png';
@@ -49,10 +49,13 @@ function Dashboard() {
           },
         });
 
+        // Calculate the total impressions by summing up only the quiz-level impressions
+        const totalImpressions = response.data.quizzes.reduce((acc, quiz) => acc + quiz.impressions, 0);
+
         setStats({
           totalQuizzes: response.data.totalQuizzes,
           totalQuestions: response.data.totalQuestions,
-          totalImpressions: response.data.totalImpressions,
+          totalImpressions: totalImpressions,
         });
 
         setQuizzes(response.data.quizzes);
@@ -174,7 +177,7 @@ function Dashboard() {
                     </div>
                   ))
                 ) : (
-                  <p>No quizzes available.</p>
+                  <p className='no-Quiz-msg'>No Quiz Available</p>
                 )}
               </div>
             </div>

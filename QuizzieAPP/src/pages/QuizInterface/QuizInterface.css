@@ -228,3 +228,13 @@
   text-align: center;
   color: #474444;
 }
+.loading-msg {
+  font-size: 50px;
+  font-weight: 500;
+  color: #474444;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

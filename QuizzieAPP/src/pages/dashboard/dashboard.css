@@ -211,5 +211,12 @@
   font-weight: 500;
   white-space: nowrap;
 }
-
-
+.no-Quiz-msg{
+  width: 100%;
+  font-size: 40px;
+  color: #474444;
+  margin: 20% 150%;
+  opacity: 0.5;
+  font-weight: 600;
+  white-space: nowrap;
+}

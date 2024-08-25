@@ -121,7 +121,7 @@ function QuizInterface() {
     };
 
     if (!quizData) {
-        return <div>Loading...</div>;
+        return <div className='loading-msg'>Loading...</div>;
     }
 
     return (
@@ -153,6 +153,7 @@ function QuizInterface() {
                                             className="option-image"
                                             onError={handleImageError}
                                         />
+                                        
                                     )}
                                 </div>
                             ))}
