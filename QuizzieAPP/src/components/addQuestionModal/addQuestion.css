@@ -325,35 +325,4 @@
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .addque-modal-content {
-        padding: 20px;
-    }
 
-    .addque-question-nav-btn,
-    .addque-add-question-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-    }
-
-    .addque-option-block input[type="text"] {
-        font-size: 12px;
-        height: 30px;
-    }
-
-    .addque-timer-block p {
-        font-size: 14px;
-    }
-
-    .addque-timer-block button {
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-
-    .addque-modal-actions .addque-cancel-btn,
-    .addque-modal-actions .addque-continue-btn {
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-}

@@ -281,6 +281,7 @@ function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
                                                 className={`addque-option-block ${questions[currentQuestionIndex].correctOption === oIndex ? 'addque-correct-option' : ''}`}
                                             >
                                                 <input
+                                                className='radio-option'
                                                     type="radio"
                                                     name={`correctOption-${currentQuestionIndex}`}
                                                     checked={questions[currentQuestionIndex].correctOption === oIndex}
