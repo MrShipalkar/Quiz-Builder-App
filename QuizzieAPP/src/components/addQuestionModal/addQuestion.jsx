@@ -25,17 +25,34 @@ function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
 
     const handleAddQuestion = () => {
         const currentQuestion = questions[currentQuestionIndex];
-        if (currentQuestion.text.trim() === '' || currentQuestion.options.some(option => option.text.trim() === '' && option.url.trim() === '')) {
-            toast.error('Please fill out the current question before adding a new one.');
+        
+        if (currentQuestion.text.trim() === '') {
+            toast.error('Please enter the question text.');
             return;
         }
-
+        
+        const isValidOptions = currentQuestion.options.every(option => {
+            if (currentQuestion.optionType === 'Text') {
+                return option.text.trim() !== '';  
+            } else if (currentQuestion.optionType === 'Image URL') {
+                return option.url.trim() !== '';   
+            } else if (currentQuestion.optionType === 'Text & Image URL') {
+                return option.text.trim() !== '' && option.url.trim() !== ''; 
+            }
+            return false; 
+        });
+    
+        if (!isValidOptions) {
+            toast.error('Please fill out all the options correctly.');
+            return;
+        }
+    
         if (questions.length < 5) {
             setQuestions([...questions, { text: '', options: [{ text: '', url: '' }, { text: '', url: '' }], correctOption: null, timer: 0, optionType: 'Text' }]);
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
     };
-
+    
     const handleQuestionChange = (value) => {
         const newQuestions = [...questions];
         newQuestions[currentQuestionIndex].text = value;
@@ -87,26 +104,35 @@ function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
     };
 
     const handleSubmitQuiz = async () => {
+        console.log('Create Quiz button clicked');
+    
         for (const question of questions) {
             if (question.text.trim() === "") {
+                // console.log('Please enter a valid question');
                 toast.error("Please enter a valid question");
                 return;
             }
+    
             for (const option of question.options) {
                 if (question.optionType === "Text" && option.text.trim() === "") {
+                    // console.log('Please enter a valid text option');
                     toast.error("Please enter a valid text option");
                     return;
                 }
                 if (question.optionType === "Image URL" && option.url.trim() === "") {
+                    // console.log('Please enter a valid image URL');
                     toast.error("Please enter a valid image URL");
                     return;
                 }
                 if (question.optionType === "Text & Image URL" && (option.text.trim() === "" || option.url.trim() === "")) {
+                    // console.log('Please enter both text and image URL');
                     toast.error("Please enter both text and image URL");
                     return;
                 }
             }
+    
             if (question.correctOption === null && quizType === "Q & A") {
+                // console.log('Please select a correct option');
                 toast.error("Please select a correct option");
                 return;
             }

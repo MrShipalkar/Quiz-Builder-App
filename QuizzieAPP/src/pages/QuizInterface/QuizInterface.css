@@ -10,24 +10,24 @@
 .quiz-box {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   border-radius: 10px;
   box-shadow: 0px 0px 30px 0px #00000026;
   padding: 30px;
   align-items: center;
   background-color: rgba(255, 255, 255, 1);
   width: 100%;
-  max-width: 1200px; 
+  max-width: 1200px;
   height: 100%;
-  max-height: 80vh; 
-  overflow-y: auto; 
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .quiz-header {
   display: flex;
   justify-content: space-between;
   width: 90%;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .quiz-header div {
@@ -57,72 +57,72 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 50px 100px;
   width: 100%;
-  max-width: 800px; 
+  max-width: 800px;
   margin-bottom: 30px;
 }
 
 .option {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 320px;
-  height: 112px; 
+  height: 112px;
   padding: 10px;
   background-color: rgb(218, 218, 218);
   border: 2px solid transparent;
   border-radius: 10px;
   cursor: pointer;
   text-align: center;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .option.with-image {
-  flex-direction: row; 
+  flex-direction: row;
 }
 
 .option.without-text .option-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 .option p {
-  font-size: 34px; 
+  font-size: 34px;
   font-weight: 600;
   color: rgba(0, 0, 0, 1);
   margin-left: 10px;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .option-image {
-  max-width: 100%; 
+  max-width: 100%;
   max-height: 100%;
   height: auto;
 }
 
 .with-image-text {
   margin-left: 10px;
-  font-size: 14px; 
+  font-size: 14px;
   line-height: 1.2;
   word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .option.selected {
   border: 5px solid rgba(80, 118, 255, 1);
 }
 
- .quiz-box button {
-  margin-top: auto; 
+.quiz-box button {
+  margin-top: auto;
   width: 320px;
   max-width: 320px;
-  height: 56px; 
+  height: 56px;
   font-size: 30px;
   font-weight: 600;
   background-color: #60b84b;
@@ -136,9 +136,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
-  height: 100vh; 
-  width: 100vw; 
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .QA-msg {
@@ -146,8 +146,8 @@
   color: rgba(71, 68, 68, 1);
   font-weight: bold;
   text-align: center;
-  white-space: nowrap; 
-} 
+  white-space: nowrap;
+}
 
 .results-container span {
   display: flex;
@@ -158,63 +158,104 @@
   white-space: nowrap;
 }
 
-.results-container span p{
+.results-container span p {
   color: rgba(96, 184, 75, 1);
   font-size: 40px;
 }
-.results-container img{
+
+.results-container img {
   width: 320px;
   height: 320px;
 }
 
-/* responsive */
 @media (max-width: 768px) {
   .quiz-interface {
-    padding: 0;
+    padding: 0px;
   }
+
   .quiz-box {
     border-radius: 0;
     padding: 20px;
-  max-width: 100%; 
-    height: 100%; 
-    max-height: none; 
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    overflow-y: auto;
   }
 
   .quiz-header div {
-    font-size: 20px; 
+    font-size: 18px;
+    padding: 5px 0;
   }
 
   .question-text {
-    font-size: 24px; 
-    margin-bottom: 20px;
+    font-size: 22px;
+    margin-bottom: 15px;
+    line-height: 1.4;
   }
 
   .options-container {
-    grid-template-columns: 1fr; 
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
 
+  .option {
+    max-height: 112px;
+    height: auto;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .option p {
-    font-size: 18px; 
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
   .option img {
-    width: 100%; 
+    max-width: 100%;
     height: auto;
-    margin-right: 0; 
+    border-radius: 8px;
   }
 
-  button {
-    font-size: 20px; 
-    height: 50px; 
+  .quiz-box button {
+    font-size: 18px;
+    padding: 10px;
+    height: auto;
+    width: 60%;
+    border-radius: 8px;
+    margin-bottom: auto;
   }
-
-  .results-container h2, .results-container span, .results-container span p {
-    font-size: 34px;
-    justify-content: center;
-    white-space: normal;
+  .results-container h2,  
+  .results-container span p {
+      font-size: 40px;
+      text-align: center;
+      width: 100%;
+      white-space: inherit;
+      display: block; 
+      margin: 0;
+  }
+  
+  .results-container span p {
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      margin-top: 10px; 
+  }
+  
+  .results-container span {
+      display: block; 
+      margin-top: 20px; 
   }
 }
+
+
 .option-image {
   max-width: 100%;
   height: auto;
@@ -222,12 +263,13 @@
   margin: 0 auto;
 }
 
-.poll-msg{
+.poll-msg {
   font-size: 74px;
   width: 800px;
   text-align: center;
   color: #474444;
 }
+
 .loading-msg {
   font-size: 50px;
   font-weight: 500;
