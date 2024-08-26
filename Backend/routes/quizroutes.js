@@ -3,21 +3,20 @@ const router = express.Router();
 const {
     createQuiz, 
     updateQuiz, 
-    deleteQuiz, 
-    getQuiz, 
+    deleteQuiz,  
     getQuizzesByUserId, 
     updateCorrectAnswers, 
     getQuizById, 
     updateChosenOption
 } = require('../controllers/quizControllers');
 
-router.post('/createQuiz', createQuiz);
-router.put('/updateQuiz/:id', updateQuiz);
-router.delete('/deleteQuiz/:id', deleteQuiz);
-router.get('/getQuiz/:quizId', getQuizById); // Updated to get quiz by ID and increment impressions
-router.get('/getQuizzesByUserId/', getQuizzesByUserId);
-router.post('/updateCorrectAnswers', updateCorrectAnswers);
-router.post('/updateChosenOption',updateChosenOption)
+router.post('/createQuiz', createQuiz);// Create Quiz
+router.put('/updateQuiz/:id', updateQuiz); //Edit Quiz
+router.delete('/deleteQuiz/:id', deleteQuiz); // Delete Quiz
+router.get('/getQuiz/:quizId', getQuizById); // Get Quiz Details for Quiz Interface (No Authorization for ananymous user)
+router.get('/getQuizzesByUserId/', getQuizzesByUserId); // Quizes Created by user
+router.post('/updateCorrectAnswers', updateCorrectAnswers); // update correct answers from Quiz Interface
+router.post('/updateChosenOption',updateChosenOption) //update Choosen option for QuestionWise Analytics
 
 
 module.exports = router;

@@ -4,13 +4,13 @@ const OptionSchema = new mongoose.Schema({
   text: {
     type: String,
     required: function() {
-      return !this.url; // If URL is provided, text is not required
+      return !this.url; 
     },
   },
   url: {
     type: String,
     required: function() {
-      return !this.text; // If text is provided, URL is not required
+      return !this.text; 
     },
   },
   choosen: {
@@ -37,7 +37,6 @@ const QuestionSchema = new mongoose.Schema({
     type: [OptionSchema],
     validate: {
       validator: function(options) {
-        // Ensure at least one valid option exists with either text or URL
         return options.every(option => option.text || option.url);
       },
       message: "Each option must have either text or an image URL."
