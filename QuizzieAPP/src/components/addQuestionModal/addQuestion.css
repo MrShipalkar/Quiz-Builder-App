@@ -126,6 +126,9 @@
     color: #9F9F9F;
     outline: none;
 }
+.addque-question-block input::placeholder{
+    color: #9F9F9F;
+}
 
 
 .addque-option-type-selection {
@@ -163,10 +166,12 @@
 
 .addque-option-type-selection input[type="radio"] {
     margin: 0 5px;
-    width: 11px;
-    height: 11px;
-    background-color: #353434;
-    border-color: #353434;
+    width: 15px;
+    height: 15px;
+    
+}
+.addque-option-type-selection input[type="radio"]:checked{
+    accent-color: #353434;
 }
 
 .addque-option-block {
@@ -203,8 +208,14 @@
     margin-right: 10px;
     width: 19px;
     height: 19px;
-}
+ 
 
+}
+.addque-option-block input[type="radio"]:checked{
+    accent-color: #60B84B;
+    background-color: #fff; 
+    
+}
 .addque-remove-option-btn {
     background: none;
     border: none;
