@@ -1,7 +1,7 @@
 import React from 'react';
 import "./QuizSucess.css"
 import cross from "../../assets/cross.png"
-import { toast, ToastContainer } from 'react-toastify';
+import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 

@@ -10,7 +10,7 @@ import QuestionWiseAnalysis from '../../components/questionWiseAnalysis/Question
 import editIcon from '../../assets/editIcon.png';
 import deleteicon from '../../assets/deleteicon.png';
 import shareIcon from '../../assets/shareIcon.png';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import API_URL from '../../services/config'
 

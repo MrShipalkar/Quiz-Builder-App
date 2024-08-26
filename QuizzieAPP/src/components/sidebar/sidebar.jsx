@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import sidebarLine from '../../assets/sidebarLine.png';
 
@@ -28,7 +28,6 @@ function Sidebar({ onCreateQuizClick, onAnalyticsClick, onDashboardClick }) {
 
   return (
     <aside className="sidebar">
-      <ToastContainer position="top-right" autoClose={2000} />
       <div className="logo">QUIZZIE</div>
       <nav className="sidebar-nav">
         <ul>
