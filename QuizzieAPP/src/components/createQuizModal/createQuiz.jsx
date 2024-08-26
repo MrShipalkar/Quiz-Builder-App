@@ -3,6 +3,7 @@ import './CreateQuiz.css';
 import AddQuestion from '../addQuestionModal/addQuestion.jsx';
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import API_URL from '../../services/config'
 
 function CreateQuiz({ onClose, onQuizCreated }) {
     const [quizName, setQuizName] = useState('');

@@ -12,6 +12,7 @@ import deleteicon from '../../assets/deleteicon.png';
 import shareIcon from '../../assets/shareIcon.png';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import API_URL from '../../services/config'
 
 const formatImpressions = (impressions) => {
   if (impressions >= 1000) {
@@ -43,7 +44,7 @@ function Dashboard() {
           throw new Error('No token found');
         }
 
-        const response = await axios.get('http://localhost:3001/api/quiz/getQuizzesByUserId/', {
+        const response = await axios.get(`${API_URL}/api/quiz/getQuizzesByUserId/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -94,7 +95,7 @@ function Dashboard() {
         throw new Error('No token found');
       }
 
-      await axios.delete(`http://localhost:3001/api/quiz/deleteQuiz/${quizToDelete}`, {
+      await axios.delete(`${API_URL}/api/quiz/deleteQuiz/${quizToDelete}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -155,7 +156,7 @@ function Dashboard() {
               </div>
             </div>
             <div className="trending-quizzes">
-              <h3>Trending Quizzes</h3>
+              <h3>Trending Quizs</h3>
               <div className="quiz-grid">
                 {trendingQuizzes && trendingQuizzes.length > 0 ? (
                   trendingQuizzes.map((quiz) => (
@@ -177,7 +178,7 @@ function Dashboard() {
                     </div>
                   ))
                 ) : (
-                  <p className='no-Quiz-msg'>No Quiz Available</p>
+                  <p className='no-Quiz-msg'>No Quizs Available</p>
                 )}
               </div>
             </div>
@@ -186,50 +187,49 @@ function Dashboard() {
           <QuestionWiseAnalysis quiz={quizForAnalysis} />
         ) : (
           <div className="analytics-view">
-            <h3>Quiz Analysis</h3>
-            <table className="analytics-table">
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Quiz Name</th>
-                  <th>Created on</th>
-                  <th>Impression</th>
-                  <th className='logo-column'></th>
-                  <th className='logo-column'></th>
-                  <th className='logo-column'></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {quizzes.length > 0 ? (
-                  quizzes.map((quiz, index) => (
-                    <tr key={quiz._id}>
-                      <td>{index + 1}</td>
-                      <td>{quiz.quizName.length > 20 ? `${quiz.quizName.slice(0, 20)}...` : quiz.quizName}</td>
-                      <td>
-                        <p>{new Date(quiz.createdOn).toLocaleDateString("en-GB", {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        })}
-                        </p>
-                      </td>
-                      <td>{formatImpressions(quiz.impressions)}</td>
-                      <td><button onClick={() => handleEditQuiz(quiz)} className="edit-button"><img src={editIcon} alt="editIcon" /></button></td>
-                      <td><button onClick={() => handleDeleteQuiz(quiz._id)} className="delete-button"><img src={deleteicon} alt="deleteicon" /></button></td>
-                      <td><button onClick={() => handleShareQuiz(quiz._id)} className="share-button"><img src={shareIcon} alt="shareIcon" /></button></td>
-                      <td><button onClick={() => handleQuestionWiseAnalysis(quiz)} className="analysis-button">Question Wise Analysis</button></td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="8" className="no-data">No quizzes available</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+  <h3>Quiz Analysis</h3>
+  <table className="analytics-table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Quiz Name</th>
+        <th>Created on</th>
+        <th>Impression</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {quizzes.length > 0 ? (
+        quizzes.map((quiz, index) => (
+          <tr key={quiz._id}>
+            <td>{index + 1}</td>
+            <td>{quiz.quizName.length > 20 ? `${quiz.quizName.slice(0, 20)}...` : quiz.quizName}</td>
+            <td>
+              <p>{new Date(quiz.createdOn).toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}</p>
+            </td>
+            <td>{formatImpressions(quiz.impressions)}</td>
+            <td><button onClick={() => handleEditQuiz(quiz)} className="edit-button"><img src={editIcon} alt="editIcon" /></button></td>
+            <td><button onClick={() => handleDeleteQuiz(quiz._id)} className="delete-button"><img src={deleteicon} alt="deleteicon" /></button></td>
+            <td><button onClick={() => handleShareQuiz(quiz._id)} className="share-button"><img src={shareIcon} alt="shareIcon" /></button></td>
+            <td><button onClick={() => handleQuestionWiseAnalysis(quiz)} className="analysis-button">Question Wise Analysis</button></td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="8" className="no-data"><p>No Quizs available</p></td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+</div>
 
-          </div>
         )}
         {showCreateQuizModal && (
           <CreateQuiz onClose={() => setShowCreateQuizModal(false)} />

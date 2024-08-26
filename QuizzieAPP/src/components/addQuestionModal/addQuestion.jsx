@@ -5,6 +5,9 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuizSuccess from '../QuizSucess/QuizSucess';
+import API_URL from '../../services/config'
+import Add from '../../assets/add.png'
+import Cross from '../../assets/crossbtn.png'
 
 function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
     const [questions, setQuestions] = useState(
@@ -164,7 +167,7 @@ function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
             };
 
             const response = await axios.post(
-                "http://localhost:3001/api/quiz/createQuiz",
+                `${API_URL}/api/quiz/createQuiz`,
                 quizData,
                 {
                     headers: {
@@ -220,13 +223,13 @@ function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
                                                 className="addque-remove-question-btn"
                                                 onClick={() => handleRemoveQuestion(index)}
                                             >
-                                                ✖
+                                                <img src={Cross}/>
                                             </button>
                                         )}
                                     </div>
                                 ))}
                                 {questions.length < 5 && (
-                                    <button className="addque-add-question-btn" onClick={handleAddQuestion}>+</button>
+                                    <button className="addque-add-question-btn" onClick={handleAddQuestion}><img src={Add} alt="" /></button>
                                 )}
                             </div>
                             <p>Max 5 questions</p>

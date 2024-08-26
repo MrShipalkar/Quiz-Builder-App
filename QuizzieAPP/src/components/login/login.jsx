@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import API_URL from '../../services/config'
 
 function Login() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ function Login() {
   
     try {
      
-      const response = await axios.post('http://localhost:3001/api/auth/login', formData);
+      const response = await axios.post(`${API_URL}/api/auth/login`, formData);
   
       const token = response.data.token;
       localStorage.setItem('token', token);

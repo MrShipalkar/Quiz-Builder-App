@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './QuizInterface.css';
 import Result from '../../assets/Result.png';
+import API_URL from '../../services/config'
 
 function QuizInterface() {
     const { quizId } = useParams();
@@ -15,7 +16,7 @@ function QuizInterface() {
     useEffect(() => {
         const fetchQuizData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/api/quiz/getQuiz/${quizId}`);
+                const response = await axios.get(`${API_URL}/api/quiz/getQuiz/${quizId}`);
                 setQuizData(response.data.data);
             } catch (error) {
                 console.error('Error fetching quiz data:', error);
@@ -54,7 +55,7 @@ function QuizInterface() {
         console.log('Sending request to update chosen option:', { quizId, questionIndex: currentQuestionIndex, optionIndex: selectedOption });
         
         axios.post(
-            'http://localhost:3001/api/quiz/updateChosenOption',
+           ` ${API_URL}/api/quiz/updateChosenOption`,
             { quizId, questionIndex: currentQuestionIndex, optionIndex: selectedOption },
             {
                 headers: {
@@ -91,7 +92,7 @@ function QuizInterface() {
         try {
             const token = localStorage.getItem('token');
             await axios.post(
-                'http://localhost:3001/api/quiz/updateCorrectAnswers',
+                `${API_URL}/api/quiz/updateCorrectAnswers`,
                 { quizId, questionIndex },
                 {
                     headers: {
@@ -103,17 +104,6 @@ function QuizInterface() {
             console.error('Error updating correct answers:', error);
         }
     };
-
-    // const updateChosenOption = async (questionIndex, optionIndex) => {
-    //     try {
-    //         await axios.post(
-    //             'http://localhost:3001/api/quiz/updateChosenOption',
-    //             { quizId, questionIndex, optionIndex }
-    //         );
-    //     } catch (error) {
-    //         console.error('Error updating chosen option:', error);
-    //     }
-    // };
 
     const handleImageError = (event) => {
         console.error("Error loading image:", event.target.src);

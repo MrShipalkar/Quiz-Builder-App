@@ -69,14 +69,14 @@
 
 .addque-remove-question-btn {
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: 2px;
+    right: -2px;
     background: transparent;
     color: #474444;
     border: none;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     font-size: 12px;
     line-height: 20px;
     text-align: center;
@@ -99,10 +99,10 @@
     margin-right: 10px;
 }
 
-.addque-add-question-btn {
-    width: 30px;
+.addque-add-question-btn{
+    width: 25px;
+    height: 25px;
     background-color: #fff;
-    color: #969696;
     border: none;
     font-size: 40px;
     cursor: pointer;

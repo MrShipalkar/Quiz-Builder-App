@@ -140,11 +140,11 @@
   font-size: 50px;
   font-weight: 600;
   margin-bottom: 50px;
-  color: rgba(80, 118, 255, 1);
+  color: #5076FF;
 }
 
 .analytics-view .analytics-table {
-  table-layout: fixed; /* Ensure the table layout is fixed */
+  table-layout: fixed; 
   width: auto;
   min-width: 80%;
   border-collapse: collapse;
@@ -154,34 +154,55 @@
   box-sizing: border-box;
 }
 
-.analytics-view .analytics-table th,
-.analytics-view .analytics-table td {
-  padding: 10px 15px;
+.analytics-view .analytics-table th {
+  padding:15px;
   font-size: 16px;
   font-weight: 600;
   white-space: nowrap;
-  overflow: hidden; /* Hide overflow content */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
-}
-
-.analytics-view .analytics-table th {
-  background-color: rgba(80, 118, 255, 1);
-  height: 35px;
-  color: rgba(255, 255, 255, 1);
-  white-space: nowrap;
-}
-
-.analytics-view .analytics-table .logo-column {
-  width: 400px; 
-  max-width: 40px;
-  min-width: 40px;
-  text-align: center;
   overflow: hidden;
+  text-overflow: ellipsis; 
+  background-color: #5076FF;
+  height: 35px;
+  color: #FFFFFF;
+  /* line-height: 40px; */
 }
 
-.analytics-table th {
-  width: 150px;
+.analytics-view .analytics-table td {
+  padding:15px;
+  height: 39px;
+  font-size: 16px;
+  /* line-height: 40px; */
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+  color:#000000 ;
 }
+
+
+.analytics-view .analytics-table th:nth-child(1){
+  width: 10px;
+
+}
+.analytics-view .analytics-table th:nth-child(2),
+.analytics-view .analytics-table th:nth-child(3),
+.analytics-view .analytics-table th:nth-child(4)
+  {
+    width: 150px;
+}
+.analytics-view .analytics-table th:nth-child(5),
+.analytics-view .analytics-table th:nth-child(6),
+.analytics-view .analytics-table th:nth-child(7){
+  width: 50px;
+}
+.analytics-view .analytics-table th:nth-child(8){
+  width: 300px;
+  
+}
+.analytics-view .analytics-table td:nth-child(8){
+  text-align: left;
+  
+}
+
 
 .analytics-table th:first-child {
   border-radius: 10px 0px 0px 10px;
@@ -211,14 +232,15 @@
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .analytics-table tbody tr td .edit-button img,
 .analytics-table tbody tr td .delete-button img,
 .analytics-table tbody tr td .share-button img {
-  width: 18px; /* Adjust size of the icons */
-  height: 18px;
+  width: 18px; 
+  height:18px;
 }
 
 .analytics-table tbody tr td .edit-button,
@@ -246,4 +268,11 @@
   opacity: 0.5;
   font-weight: 600;
   white-space: nowrap;
+}
+.no-data p{
+  font-size: 30px;
+  color: #474444;
+  font-weight: 600;
+  opacity: 0.5;
+
 }

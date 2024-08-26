@@ -1,6 +1,6 @@
 import React from 'react';
 import './QuestionWiseAnalysis.css';
-import line from '../../assets/line.png'
+import line from '../../assets/line.png';
 
 function QuestionWiseAnalysis({ quiz }) {
   return (
@@ -22,22 +22,27 @@ function QuestionWiseAnalysis({ quiz }) {
         </div>
 
         <div className="questionwise-question">
-
           {quiz.questions.map((question, index) => (
             <div key={index} className="questionwise-question-block">
               <h3>{`Q${index + 1}. ${question.question}`}</h3>
               {quiz.quizType === 'Q & A' ? (
                 <div className="questionwise-stats">
-                  <div className="questionwise-stat-box"><p>{question.impressions}</p> people Attempted the question</div>
-                  <div className="questionwise-stat-box"><p>{question.correctAnswers}</p> people Answered Correctly</div>
-                  <div className="questionwise-stat-box"><p>{question.impressions - question.correctAnswers}</p> people Answered Incorrectly</div>
+                  <div className="questionwise-stat-box">
+                    <p>{question.impressions}</p> people Attempted the question
+                  </div>
+                  <div className="questionwise-stat-box">
+                    <p>{question.correctAnswers}</p> people Answered Correctly
+                  </div>
+                  <div className="questionwise-stat-box">
+                    <p>{question.impressions - question.correctAnswers}</p> people Answered Incorrectly
+                  </div>
                 </div>
-
               ) : (
                 <div className="questionwise-stats">
                   {question.options.map((option, oIndex) => (
                     <div key={oIndex} className="questionwise-stat-box-poll">
-                      <p>{option.choosen}</p> {option.text || option.url}
+                      <p>{option.choosen}</p> 
+                      <span>{option.text || <img src={option.url}/>}</span> 
                     </div>
                   ))}
                 </div>
@@ -46,7 +51,6 @@ function QuestionWiseAnalysis({ quiz }) {
             </div>
           ))}
         </div>
-
       </main>
     </div>
   );

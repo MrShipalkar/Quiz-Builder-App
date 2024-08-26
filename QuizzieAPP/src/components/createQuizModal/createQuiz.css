@@ -86,6 +86,7 @@
 }
 .create-quiz-modal-actions button {
     width: 279px;
+    height: 50px;
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0px 0px 15px 0px #00000040;

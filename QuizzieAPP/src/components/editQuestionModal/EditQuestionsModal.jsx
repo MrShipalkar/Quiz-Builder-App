@@ -4,6 +4,7 @@ import deleteOption from '../../assets/deleteOption.png';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import API_URL from '../../services/config'
 
 function EditQuestionsModal({ quiz, onClose }) {
     const [questions, setQuestions] = useState(quiz.questions);
@@ -67,7 +68,7 @@ function EditQuestionsModal({ quiz, onClose }) {
             };
     
             const response = await axios.put(
-                `http://localhost:3001/api/quiz/updateQuiz/${quiz._id}`,
+                `${API_URL}/api/quiz/updateQuiz/${quiz._id}`,
                 quizData,
                 {
                     headers: {
