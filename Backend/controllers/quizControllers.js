@@ -198,4 +198,4 @@ const updateChosenOption = async (req, res) => {
   }
 };
 
-module.exports = {createQuiz,updateQuiz,deleteQuiz,getQuiz,getQuizzesByUserId,updateCorrectAnswers,getQuizById,updateChosenOption,ananymousUser,shareQuiz,};
+module.exports = {createQuiz,updateQuiz,deleteQuiz,getQuizzesByUserId,updateCorrectAnswers,getQuizById,updateChosenOption};
