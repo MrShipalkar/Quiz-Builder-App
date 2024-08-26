@@ -8,9 +8,7 @@ const {
     getQuizzesByUserId, 
     updateCorrectAnswers, 
     getQuizById, 
-    updateChosenOption,
-    ananymousUser, 
-    shareQuiz
+    updateChosenOption
 } = require('../controllers/quizControllers');
 
 router.post('/createQuiz', createQuiz);
@@ -20,8 +18,6 @@ router.get('/getQuiz/:quizId', getQuizById); // Updated to get quiz by ID and in
 router.get('/getQuizzesByUserId/', getQuizzesByUserId);
 router.post('/updateCorrectAnswers', updateCorrectAnswers);
 router.post('/updateChosenOption',updateChosenOption)
-// Uncomment if you want to use them
-// router.get('/ananymousUser/:id', ananymousUser);
-// router.post('/shareQuiz/:id', shareQuiz);
+
 
 module.exports = router;

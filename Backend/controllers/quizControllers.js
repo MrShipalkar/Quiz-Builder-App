@@ -8,7 +8,7 @@ const createQuiz = async (req, res) => {
   quizData.createdBy = req.user._id;
 
   try {
-    // Add this log to see what exactly is being passed to the schema
+
     // console.log("Attempting to save quiz:", JSON.stringify(quizData, null, 2));
 
     const newQuiz = new Quiz(quizData);
@@ -29,9 +29,6 @@ const createQuiz = async (req, res) => {
     });
   }
 };
-
-
-
 
 
 const updateQuiz = async (req, res) => {
@@ -98,27 +95,6 @@ const deleteQuiz = async (req, res) => {
   }
 };
 
-
-
-  const getQuiz =  async (req, res) => {
-    try {
-      const quiz = await Quiz.findById(req.params.id);
-      if (!quiz) {
-        return res.status(404).json({ message: 'Quiz not found' });
-      }
-      res.status(200).json({
-        message: 'Quiz retrieved successfully',
-        data: quiz,
-        status: 'ok'
-      });
-    } catch (err) {
-      res.status(500).json({
-        message: 'Error retrieving quiz',
-        error: err.message
-      });
-    }
-  };
-
   const updateCorrectAnswers = async (req, res) => {
     const { quizId, questionIndex } = req.body;
 
@@ -138,56 +114,6 @@ const deleteQuiz = async (req, res) => {
         res.status(500).json({ message: 'Error updating correct answers', error: error.message });
     }
 };
-
-  const ananymousUser = async (req, res) => {
-    try {
-      // Find the quiz by ID
-      const quiz = await Quiz.findById(req.params.id)
-        .select('questions') // Select only the questions field
-        .lean(); // Convert to a plain JavaScript object
-  
-      if (!quiz) {
-        return res.status(404).json({ message: 'Quiz not found' });
-      }
-  
-      // Map the questions to include only necessary fields
-      const formattedQuestions = quiz.questions.map(question => ({
-        question: question.question,
-        options: question.options.map(option => ({
-          text: option.text,
-          url: option.url,
-          chosen: option.chosen // Include `chosen` if needed
-        })),
-        correctOption: question.correctOption // Include only the correct option index
-      }));
-  
-      res.status(200).json({
-        message: 'Quiz retrieved successfully',
-        data: formattedQuestions,
-        status: 'ok'
-      });
-    } catch (err) {
-      res.status(500).json({
-        message: 'Error retrieving quiz',
-        error: err.message
-      });
-    }
-  };
-
-
-const shareQuiz = async (req, res) => {
-    try {
-      const quiz = await Quiz.findById(req.params.id)
-      if (!quiz) {
-        return res.status(404).json({ message: 'Quiz not found' });
-      }
-      // Handle sharing logic, e.g., generate a shareable URL or log sharing actions
-      res.status(200).json({ message: 'Quiz shared successfully' });
-    } catch (error) {
-      res.status(500).json({ message: 'Error sharing quiz', error: error.message });
-    }
-  };
-  
 
   const getQuizzesByUserId = async (req, res) => {
     try {
@@ -221,9 +147,6 @@ const shareQuiz = async (req, res) => {
     }
 };
 
-
-
-  
 
 const getQuizById = async (req, res) => {
   try {

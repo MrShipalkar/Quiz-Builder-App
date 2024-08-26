@@ -47,7 +47,7 @@ function SignUp() {
     }
 
     if (!formData.password) {
-      err.passwordError = "Weak password";
+      err.passwordError = "Enter password";
       isValid = false;
     } else if ((formData.password).length < 6) {
       err.passwordError = "Password must contain min. 6 characters";

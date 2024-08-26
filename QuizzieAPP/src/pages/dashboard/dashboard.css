@@ -133,6 +133,8 @@
 /* analysis page css */
 
 
+/* analysis page css */
+
 .analytics-view h3 {
   text-align: center;
   font-size: 50px;
@@ -142,7 +144,7 @@
 }
 
 .analytics-view .analytics-table {
-  table-layout: fixed;
+  table-layout: fixed; /* Ensure the table layout is fixed */
   width: auto;
   min-width: 80%;
   border-collapse: collapse;
@@ -150,37 +152,35 @@
   margin: 0 auto;
   text-align: center;
   box-sizing: border-box;
-
 }
 
-/* .analytics-view .analytics-table th {
-  width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
-
-.analytics-view .analytics-table th .logo-column {
-  max-width: 100px;
-  min-width: 40px;
-  width: auto;
-  height: 24px;
-  text-align: center;
-}
-
-.analytics-table th,
-.analytics-table td {
+.analytics-view .analytics-table th,
+.analytics-view .analytics-table td {
   padding: 10px 15px;
   font-size: 16px;
   font-weight: 600;
-
+  white-space: nowrap;
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
 
-.analytics-table th {
+.analytics-view .analytics-table th {
   background-color: rgba(80, 118, 255, 1);
   height: 35px;
   color: rgba(255, 255, 255, 1);
   white-space: nowrap;
+}
 
+.analytics-view .analytics-table .logo-column {
+  width: 400px; 
+  max-width: 40px;
+  min-width: 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.analytics-table th {
+  width: 150px;
 }
 
 .analytics-table th:first-child {
@@ -200,14 +200,11 @@
 }
 
 .analytics-table tbody tr:nth-child(even) td {
-  background-color: rgba(179, 196, 255, 1);
-  white-space: nowrap;
-
-
+  background-color: #B3C4FF;
 }
 
 .analytics-table tbody tr:nth-child(odd) {
-  background-color: rgba(237, 237, 237, 1);
+  background-color: #EDEDED;
 }
 
 .analytics-table tbody tr td button {
@@ -215,18 +212,30 @@
   background: none;
   cursor: pointer;
   font-size: 13px;
-
 }
 
+.analytics-table tbody tr td .edit-button img,
+.analytics-table tbody tr td .delete-button img,
+.analytics-table tbody tr td .share-button img {
+  width: 18px; /* Adjust size of the icons */
+  height: 18px;
+}
 
+.analytics-table tbody tr td .edit-button,
+.analytics-table tbody tr td .delete-button,
+.analytics-table tbody tr td .share-button {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
 
 .analysis-button {
   color: rgba(0, 0, 0, 1);
   text-decoration: underline;
   font-weight: 600;
   white-space: nowrap;
-
 }
+
 
 .no-Quiz-msg {
 

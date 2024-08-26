@@ -167,6 +167,30 @@
   width: 320px;
   height: 320px;
 }
+.option-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.poll-msg {
+  font-size: 74px;
+  width: 800px;
+  text-align: center;
+  color: #474444;
+}
+
+.loading-msg {
+  font-size: 50px;
+  font-weight: 500;
+  color: #474444;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 @media (max-width: 768px) {
   .quiz-interface {
@@ -256,27 +280,3 @@
 }
 
 
-.option-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.poll-msg {
-  font-size: 74px;
-  width: 800px;
-  text-align: center;
-  color: #474444;
-}
-
-.loading-msg {
-  font-size: 50px;
-  font-weight: 500;
-  color: #474444;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
