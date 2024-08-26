@@ -85,5 +85,5 @@ img{
 .questionwise-stat-box-poll p {
   font-size: 30px;
   color: #474444;
-  margin: 0; /* add this to remove default paragraph margin */
+  margin: 0;
 }

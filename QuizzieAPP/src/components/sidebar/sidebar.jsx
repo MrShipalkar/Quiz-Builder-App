@@ -12,9 +12,9 @@ function Sidebar({ onCreateQuizClick, onAnalyticsClick, onDashboardClick }) {
     if (link === 'Create Quiz') {
       onCreateQuizClick();
     } else if (link === 'Dashboard') {
-      onDashboardClick();  // Call to show Dashboard view
+      onDashboardClick(); 
     } else if (link === 'Analytics') {
-      onAnalyticsClick();  // Call to show Analytics view
+      onAnalyticsClick();  
     }
   };
 

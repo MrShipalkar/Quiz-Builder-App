@@ -3,7 +3,7 @@ import SignUp from '../../components/signUp/signUp.jsx'
 import Login from '../../components/login/login.jsx'
 import './auth.css'
 import { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function auth() {
     const [change, setChange] = useState(false)

@@ -14,7 +14,6 @@ function CreateQuiz({ onClose, onQuizCreated }) {
             toast.error('Please fill out both quiz name and type.');
             return;
         }
-        // Open the question modal instead of submitting the quiz immediately
         setShowQuestionModal(true);
     };
 

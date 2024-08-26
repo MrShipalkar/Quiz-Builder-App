@@ -173,7 +173,6 @@ function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
 
     return (
         <div className="addque-modal-open">
-            <ToastContainer position="top-right" autoClose={5000} />
             {quizLink ? (
                 <QuizSuccess quizLink={quizLink} onClose={handleQuizSuccessClose} />
             ) : (

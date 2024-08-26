@@ -10,7 +10,7 @@
 .quiz-box {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensure content is spaced evenly */
+  justify-content: space-between; 
   border-radius: 10px;
   box-shadow: 0px 0px 30px 0px #00000026;
   padding: 30px;
@@ -19,7 +19,7 @@
   width: 100%;
   max-width: 1200px; 
   height: 100%;
-  max-height: 80vh; /* Prevent overflowing vertically */
+  max-height: 80vh; 
   overflow-y: auto; 
 }
 
@@ -27,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   width: 90%;
-  margin-bottom: 20px; /* Reduced margin to accommodate smaller screens */
+  margin-bottom: 20px; 
 }
 
 .quiz-header div {
@@ -57,61 +57,61 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 50px 100px;
   width: 100%;
-  max-width: 800px; /* Maximum width for options container */
-  margin-bottom: 30px; /* Ensure space between options and button */
+  max-width: 800px; 
+  margin-bottom: 30px;
 }
 
 .option {
   display: flex;
-  flex-direction: row; /* Align image and text horizontally */
+  flex-direction: row; 
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 320px;
-  height: 112px; /* Fixed height */
+  height: 112px; 
   padding: 10px;
   background-color: rgb(218, 218, 218);
   border: 2px solid transparent;
   border-radius: 10px;
   cursor: pointer;
   text-align: center;
-  overflow: hidden; /* Prevent content overflow */
+  overflow: hidden; 
 }
 
 .option.with-image {
-  flex-direction: row; /* Align image and text horizontally */
+  flex-direction: row; 
 }
 
 .option.without-text .option-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image fills the container */
+  object-fit: cover; 
 }
 
 .option p {
-  font-size: 34px; /* Adjust font size to fit within the box */
+  font-size: 34px; 
   font-weight: 600;
   color: rgba(0, 0, 0, 1);
   margin-left: 10px;
   overflow: hidden;
-  text-overflow: ellipsis; /* Truncate text with ellipsis if too long */
-  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; 
+  white-space: nowrap;
 }
 
 .option-image {
-  max-width: 100%; /* Adjust image width to fit within the height */
+  max-width: 100%; 
   max-height: 100%;
   height: auto;
 }
 
 .with-image-text {
   margin-left: 10px;
-  font-size: 14px; /* Adjust font size to fit within the box */
+  font-size: 14px; 
   line-height: 1.2;
   word-wrap: break-word;
   overflow: hidden;
-  text-overflow: ellipsis; /* Truncate text with ellipsis if too long */
-  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis;
+  white-space: nowrap; 
 }
 
 .option.selected {
@@ -122,7 +122,7 @@
   margin-top: auto; 
   width: 320px;
   max-width: 320px;
-  height: 56px; /* Fixed height */
+  height: 56px; 
   font-size: 30px;
   font-weight: 600;
   background-color: #60b84b;
@@ -136,9 +136,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Vertically center the content */
-  height: 100vh; /* Take up the full screen */
-  width: 100vw; /* Take up the full screen width */
+  justify-content: center; 
+  height: 100vh; 
+  width: 100vw; 
 }
 
 .QA-msg {
@@ -146,7 +146,7 @@
   color: rgba(71, 68, 68, 1);
   font-weight: bold;
   text-align: center;
-  white-space: nowrap; /* Keep the text on one line */
+  white-space: nowrap; 
 } 
 
 .results-container span {
@@ -155,7 +155,7 @@
   font-size: 40px;
   font-weight: bold;
   text-align: center;
-  white-space: nowrap; /* Keep the text on one line */
+  white-space: nowrap;
 }
 
 .results-container span p{
@@ -167,7 +167,7 @@
   height: 320px;
 }
 
-/* Media queries for mobile responsiveness */
+/* responsive */
 @media (max-width: 768px) {
   .quiz-interface {
     padding: 0;
@@ -175,44 +175,44 @@
   .quiz-box {
     border-radius: 0;
     padding: 20px;
-  max-width: 100%; /* Make the box take up the full width on mobile */
-    height: 100%; /* Let the height adjust naturally */
-    max-height: none; /* Remove max-height to prevent overflow */
+  max-width: 100%; 
+    height: 100%; 
+    max-height: none; 
   }
 
   .quiz-header div {
-    font-size: 20px; /* Adjust font size for smaller screens */
+    font-size: 20px; 
   }
 
   .question-text {
-    font-size: 24px; /* Adjust font size for smaller screens */
+    font-size: 24px; 
     margin-bottom: 20px;
   }
 
   .options-container {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr; 
     gap: 20px;
   }
 
   .option p {
-    font-size: 18px; /* Adjust font size for smaller screens */
+    font-size: 18px; 
   }
 
   .option img {
-    width: 100%; /* Make the image take up the full width */
+    width: 100%; 
     height: auto;
-    margin-right: 0; /* Remove margin */
+    margin-right: 0; 
   }
 
   button {
-    font-size: 20px; /* Adjust font size for smaller screens */
-    height: 50px; /* Adjust height for smaller screens */
+    font-size: 20px; 
+    height: 50px; 
   }
 
   .results-container h2, .results-container span, .results-container span p {
-    font-size: 34px; /* Adjust font size for smaller screens */
+    font-size: 34px;
     justify-content: center;
-    white-space: normal; /* Keep the text on one line */
+    white-space: normal;
   }
 }
 .option-image {

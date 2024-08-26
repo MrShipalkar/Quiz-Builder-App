@@ -65,17 +65,17 @@ function QuizInterface() {
             console.error('Error updating chosen option:', error);
         });
     
-        // If the correct option was selected, update the correct answers count
+        
         if (currentQuestion.correctOption === selectedOption) {
             await updateCorrectAnswers(currentQuestionIndex);
         }
     
-        // Move to the next question or show results
+      
         if (currentQuestionIndex < quizData.questions.length - 1) {
             setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
             setSelectedOption(null);
     
-            // Reset timer if applicable
+            
             if (quizData.questions[currentQuestionIndex + 1]?.timer > 0) {
                 setTimer(quizData.questions[currentQuestionIndex + 1].timer);
             } else {
@@ -104,16 +104,16 @@ function QuizInterface() {
         }
     };
 
-    const updateChosenOption = async (questionIndex, optionIndex) => {
-        try {
-            await axios.post(
-                'http://localhost:3001/api/quiz/updateChosenOption',
-                { quizId, questionIndex, optionIndex }
-            );
-        } catch (error) {
-            console.error('Error updating chosen option:', error);
-        }
-    };
+    // const updateChosenOption = async (questionIndex, optionIndex) => {
+    //     try {
+    //         await axios.post(
+    //             'http://localhost:3001/api/quiz/updateChosenOption',
+    //             { quizId, questionIndex, optionIndex }
+    //         );
+    //     } catch (error) {
+    //         console.error('Error updating chosen option:', error);
+    //     }
+    // };
 
     const handleImageError = (event) => {
         console.error("Error loading image:", event.target.src);

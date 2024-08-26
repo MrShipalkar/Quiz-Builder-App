@@ -104,8 +104,6 @@ function SignUp() {
 
   return (
     <div>
-     <ToastContainer position="top-right" autoClose={5000} />
-
       <form className='form-container' onSubmit={handleSubmit}>
         <div className='form-components'>
           <label>Name</label>

@@ -78,7 +78,7 @@ function EditQuestionsModal({ quiz, onClose }) {
     
             if (response.status === 200) {
                 toast.success("Quiz updated successfully!");
-                onClose();  // Close the modal
+                onClose(); 
             } else {
                 toast.error(`Unexpected status code: ${response.status}`);
             }

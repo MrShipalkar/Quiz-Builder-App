@@ -49,7 +49,6 @@ function Dashboard() {
           },
         });
 
-        // Calculate the total impressions by summing up only the quiz-level impressions
         const totalImpressions = response.data.quizzes.reduce((acc, quiz) => acc + quiz.impressions, 0);
 
         setStats({
@@ -75,12 +74,12 @@ function Dashboard() {
 
   const handleAnalyticsClick = () => {
     setShowAnalytics(true);
-    setQuizForAnalysis(null); // Reset analysis view when clicking on analytics
+    setQuizForAnalysis(null); 
   };
 
   const handleDashboardClick = () => {
     setShowAnalytics(false);
-    setQuizForAnalysis(null); // Reset analysis view when returning to the dashboard
+    setQuizForAnalysis(null);
   };
 
   const handleDeleteQuiz = (quizId) => {
@@ -138,6 +137,7 @@ function Dashboard() {
         onDashboardClick={handleDashboardClick}
       />
       <main className="main-content">
+
         {!showAnalytics && !quizForAnalysis ? (
           <>
             <div className="stats-container">

@@ -9,7 +9,6 @@
     justify-content: center;
     align-items: center;
   }
-  
   .modal-content {
     background-color: rgba(255, 255, 255, 1);
     padding: 50px 100px 50px 100px;
@@ -20,7 +19,6 @@
     height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
   .modal-content h3 {
     padding: 0px 70px 0px 70px;
     margin-bottom: 50px;
@@ -28,7 +26,6 @@
     color: rgba(71, 68, 68, 1);
     
   }
-  
   .modal-buttons {
     display: flex;
     justify-content: space-around;
@@ -53,6 +50,6 @@
   .cancel-button {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
     background-color: rgba(255, 255, 255, 1);
-    color: rgba(71, 68, 68, 1)k;
+    color: rgba(71, 68, 68, 1);
   }
   

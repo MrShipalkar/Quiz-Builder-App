@@ -59,16 +59,11 @@ function Login() {
     if (!isValid) return;
   
     try {
-      // Make the request to log in the user
+     
       const response = await axios.post('http://localhost:3001/api/auth/login', formData);
   
-      // Assuming the JWT token is in response.data.token
       const token = response.data.token;
-  
-      // Store the token in local storage
       localStorage.setItem('token', token);
-  
-      // Show a success message and navigate to the dashboard
       toast.success('Logged in successfully!');
       setTimeout(() => {
         navigate('/dashboard');
@@ -87,7 +82,6 @@ function Login() {
   
   return (
     <div>
-      <ToastContainer position="top-right" autoClose={5000} />
       <form className='form-container' onSubmit={handleSubmit}>
         <div className='form-components'>
           <label>Email</label>

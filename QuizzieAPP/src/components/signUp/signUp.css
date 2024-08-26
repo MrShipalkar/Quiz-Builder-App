@@ -61,13 +61,14 @@
 
 
 
-/* Red border for error inputs */
+
 .form-input.error {
-    border-color: #D60000; /* Red color for the border when there's an error */
+    border-color: #D60000; 
+    border: 1px solid #D60000 ;
+
 }
 
 
-/* Red placeholder color for error inputs */
 .form-input.error::placeholder {
     font-size: 15px;
     font-weight: 500;
