@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './editQuestionsModal.css';
+import './EditQuestionsModal.css';
 import deleteOption from '../../assets/deleteOption.png';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
