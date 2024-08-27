@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Dashboard.css';
+import './dashboard.css';
 import Sidebar from '../../components/sidebar/sidebar';
 import eye from '../../assets/eye.png';
 import axios from 'axios';
