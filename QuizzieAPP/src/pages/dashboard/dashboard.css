@@ -18,7 +18,7 @@
   justify-content: space-evenly;
   margin-bottom: 100px;
   gap: 20px;
-  flex-wrap: nowrap; /* Prevent wrapping */
+  flex-wrap: nowrap; 
 }
 
 .stat-box,
@@ -133,7 +133,7 @@
 .quiz-details h2 {
   font-size: 23px;
   color: #474444;
-  /* margin-bottom: 20px; */
+  margin-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -156,7 +156,7 @@
 }
 
 
-/* analysis page css */
+
 
 
 /* analysis page css */
