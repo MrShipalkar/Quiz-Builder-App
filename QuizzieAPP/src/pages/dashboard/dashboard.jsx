@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
-import Sidebar from '../../components/sidebar/sidebar';
+import Sidebar from '../../components/sidebar/sidebar.jsx';
 import eye from '../../assets/eye.png';
 import axios from 'axios';
-import CreateQuiz from '../../components/createQuizModal/createQuiz';
-import ConfirmDeleteModal from '../../components/deleteModal/ConfirmDeleteModal';
-import EditQuestionsModal from '../../components/editQuestionModal/EditQuestionsModal';
-import QuestionWiseAnalysis from '../../components/questionWiseAnalysis/QuestionWiseAnalysis';
+import CreateQuiz from '../../components/createQuizModal/createQuiz.jsx';
+import ConfirmDeleteModal from '../../components/deleteModal/ConfirmDeleteModal.jsx';
+import EditQuestionsModal from '../../components/editQuestionModal/EditQuestionsModal.jsx';
+import QuestionWiseAnalysis from '../../components/questionWiseAnalysis/QuestionWiseAnalysis.jsx';
 import editIcon from '../../assets/editIcon.png';
 import deleteicon from '../../assets/deleteicon.png';
 import shareIcon from '../../assets/shareIcon.png';
