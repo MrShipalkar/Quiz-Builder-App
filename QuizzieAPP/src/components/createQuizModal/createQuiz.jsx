@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CreateQuiz.css';
+import './createQuiz.css';
 import AddQuestion from '../addQuestionModal/addQuestion.jsx';
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
