@@ -143,16 +143,16 @@ function Dashboard() {
           <>
             <div className="stats-container">
               <div className="stat-box">
-                <h2>{stats.totalQuizzes}</h2>
-                <p>Quizzes Created</p>
+                <h2>{stats.totalQuizzes}  <span>Quizzes</span></h2>
+                <p> Created</p>
               </div>
               <div className="stat-box">
-                <h2>{stats.totalQuestions}</h2>
-                <p>Questions Created</p>
+                <h2>{stats.totalQuestions}  <span>Questions</span></h2>
+                <p> Created</p>
               </div>
               <div className="stat-box">
-                <h2>{formatImpressions(stats.totalImpressions)}</h2>
-                <p>Total Impressions</p>
+                <h2>{formatImpressions(stats.totalImpressions)}  <span>Total</span></h2>
+                <p> Impressions</p>
               </div>
             </div>
             <div className="trending-quizzes">

@@ -232,8 +232,9 @@
     height: auto;
     max-width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    /* align-items: center; */
   }
 
   .option p {
@@ -242,7 +243,7 @@
     margin-bottom: 10px;
   }
 
-  .option img {
+  .option-image {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
