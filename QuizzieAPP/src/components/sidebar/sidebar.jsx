@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Sidebar.css';
+import './sidebar.css';
 import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import sidebarLine from '../../assets/sidebarLine.png';
