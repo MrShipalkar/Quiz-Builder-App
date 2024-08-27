@@ -6,7 +6,7 @@ import axios from 'axios';
 import CreateQuiz from '../../components/createQuizModal/createQuiz.jsx';
 import ConfirmDeleteModal from '../../components/deleteModal/ConfirmDeleteModal.jsx';
 import EditQuestionsModal from '../../components/editQuestionModal/EditQuestionsModal.jsx';
-import QuestionWiseAnalysis from '../../components/questionWiseAnalysis/QuestionWiseAnalysis.jsx';
+import QuestionWiseAnalysis from '../../components/QuestionWiseAnalysis/QuestionWiseAnalysis.jsx';
 import editIcon from '../../assets/editIcon.png';
 import deleteicon from '../../assets/deleteicon.png';
 import shareIcon from '../../assets/shareIcon.png';
