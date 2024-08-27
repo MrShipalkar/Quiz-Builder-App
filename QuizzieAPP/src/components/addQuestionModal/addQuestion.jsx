@@ -107,7 +107,6 @@ function AddQuestionsModal({ quizName, quizType, onClose, questionsToEdit }) {
     };
 
     const handleSubmitQuiz = async () => {
-        console.log('Create Quiz button clicked');
     
         for (const question of questions) {
             if (question.text.trim() === "") {

@@ -52,7 +52,6 @@ function QuizInterface() {
     const handleNextQuestion = async () => {
         const currentQuestion = quizData.questions[currentQuestionIndex];
     
-        console.log('Sending request to update chosen option:', { quizId, questionIndex: currentQuestionIndex, optionIndex: selectedOption });
         
         axios.post(
            ` ${API_URL}/api/quiz/updateChosenOption`,
