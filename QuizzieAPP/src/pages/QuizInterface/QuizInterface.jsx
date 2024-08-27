@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './QuizInterface.css';
-import Result from '../../assets/Result.png';
+import Result from '../../assets/result.png';
 import API_URL from '../../services/config'
 
 function QuizInterface() {
